@@ -13,6 +13,10 @@ $ pip install -r requirements.txt
 $ python app.py
 ```
 
+Then visit http://localhost:5000.
+
+To update the bower components, you may need to run `bower install` (requires `npm`).
+
 ## Public domain
 
 This project is in the public domain within the United States, and
