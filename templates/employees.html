@@ -1,5 +1,398 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>Violations</h1>
+  <div class="grid-6 gutter-10">
+  	<div class="span-5">
+      <strong>Employer</strong>
+      <h1>ACME Candles</h1>
+    </div>
+  	<div class="span-1">
+      <strong>Case Id</strong>
+      <h1>00345678</h1>
+    </div>
+  </div>
+  
+  <div class="grid-6 gutter-10">
+  	<div class="span-5">112 Any Street, Anytown, CA 12345</div>
+  	<div class="span-1"></div>
+  </div>
+    
+  <hr />
+  
+  <div class="grid-6 gutter-10  ">
+  	<div class="span-1">
+      <h2>Employees</h2>
+    </div>
+  	<div class="span-2"><h3>
+      <h2><a href="/violations">View by Violation</a></h2>
+    </div>
+    <div class="span-3">
+      <br />
+      <a style="margin-right:10px" class="button-lightgray" href="/manual">Add Employee</a>
+      <a style="margin-right:10px" class="button-lightgray" href="/import">Import Spreadsheet</a>  
+    </div>
+  </div>
+  
+  <br />
+  
+  <div class="grid=6 gutter-10">
+    <div class="span-6">
+      <div class="flakes-search">
+        <input class="search-box search" placeholder="Filter by Name, Act, Dates, etc. (press enter to apply filter)" autofocus="">
+      </div>
+    </div>
+  </div>
+  
+  <br />
+    
+  <div class="grid-6 gutter-10">
+    <div class="span-3">
+      <div class="flakes-pagination">
+        <a href="#">Prev</a> &nbsp; <input value="1"> <i>of</i> 3 &nbsp; <a href="#">Next</a>
+      </div>
+    </div>
+    <div class="span-3">
+      <p>Most Recently Added | <a href="#">Alphabetically</a></p>
+    </div>
+  </div>
+  
+  <br />
+  
+  <div class="grid-6 gutter-10">
+    <div class="span-6">
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+      
+      <br />
+      
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+      
+      <br />
+      
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+      
+      <br />
+      
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+      
+      <br />
+      
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+      
+      <br />
+      
+      <fieldset class="flakes-information-box">
+				<legend><strong>Jane A. Smithlongname</strong></legend>
+        
+				<div class="grid-4">
+					<dl class="span-2">
+						<dt>Address</dt>
+						<dd>112 Any Street, Anytown, CA 12345</dd>
+					</dl>
+					<dl class="span-2">
+						<dt>Status Id</dt>
+						<dd>123456</dd>
+					</dl>
+				</div>
+        
+
+        <table class="flakes-table">
+        		<colgroup>
+        			<col span="1" style="width:20px">
+        			<col span="1" style="width:40%">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<td>Act Violated</td>
+        				<td>Violation</td>
+        				<td>From</td>
+                <td>To</td>
+                <td>Compliance</td>
+                <td>BW Completed</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr>
+        			  <td>FLFA</td>
+        			  <td>Failure to pay Minimum...</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        			<tr>
+        			  <td>FOO</td>
+        			  <td>Something Else</td>
+        			  <td>01/12/13</td>
+        			  <td>11/25/14</td>
+                <td>Agree to Comply</td>
+                <td>$125.35</td>
+        			</tr>
+        		</tbody>
+        	</table>        
+			</fieldset>
+    </div>
+    
+    <div class="grid-6 gutter-10">
+      <div class="span-6">
+        <div class="flakes-pagination">
+          <a href="#">Prev</a> &nbsp; <input value="1"> <i>of</i> 3 &nbsp; <a href="#">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
