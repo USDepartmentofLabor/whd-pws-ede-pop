@@ -57,10 +57,12 @@ def create_temp_viol_in_session(connection):
 """
     result =  connection.execute(call_cmd);
 
-def getRandomSixString():
-    # Thanks to Ignacio Vasquez-Abrams from Stack Exchnage
-    r = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
-    return r;
+class Employee_pl:
+    def __init__(self, first, middle, last):
+        self.first_name = first;
+        self.middle_initial = middle;
+        self.last_name = last;
+
 
 # Note: There is a danger I may have inserted a record into case_employees by hand.
 # We seem to have a problem building records there.  I may have to build a 
@@ -93,7 +95,7 @@ insert into SESSION.Temp_Ee values
 """;
     result =  connection.execute(call_cmd);
 
-def insert_random_emp_into_temp_ee(connection,case_id):
+def insert_random_emp_into_temp_ee(connection,case_id,employee):
     call_cmd = """
 insert into SESSION.Temp_Ee values
      ( {0},
@@ -116,18 +118,19 @@ insert into SESSION.Temp_Ee values
        0
      )
 """;
-    insert_emp = call_cmd.format(case_id,'Mickey','M','Mouse'+str(case_id));
+#    insert_emp = call_cmd.format(case_id,'Mickey','M','Mouse'+str(case_id));
+    insert_emp = call_cmd.format(case_id,employee.first_name,employee.middle_initial,employee.last_name);
     print insert_emp
     result =  connection.execute(insert_emp);
 
 
 # In the unlikely event a random collision, this will fail an integrity check.
-def insert_something_into_temp_viol(connection,case_id):
+def insert_something_into_temp_viol(connection,case_id,violation):
     call_cmd0 = """
 insert into SESSION.Temp_Viol values
      ( 2,
 """
-    call_cmd1 = "'"+getRandomSixString()+"'";
+    call_cmd1 = "'"+violation+"'";
     call_cmd2 = """
        0,
        0,

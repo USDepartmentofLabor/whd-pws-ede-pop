@@ -28,6 +28,8 @@ In the persistence_layer directory, run:
 
     $ python whisard_connectivity_test.py
 
+At the time of this writing, this test will probably fail unless you have disabled a trigger.  I have a script for that, but am currently hesitant to commit it to this repo.
+
 
 ## Public domain
 
