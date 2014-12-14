@@ -17,6 +17,18 @@ Then visit http://localhost:5000.
 
 To update the bower components, you may need to run `bower install` (requires `npm`).
 
+## Tests
+
+To run the tests, you must set the environment variables:
+
+   export DB2INSTL_USERNAME='db2username'
+   export DB2INSTL_PASSWORD='somepasswordnotthisone'
+
+In the persistence_layer directory, run:
+
+   python whisard_connectivity_test.py
+
+
 ## Public domain
 
 This project is in the public domain within the United States, and
