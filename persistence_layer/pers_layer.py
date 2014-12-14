@@ -63,6 +63,12 @@ class Employee_pl:
         self.middle_initial = middle;
         self.last_name = last;
 
+# In reality, this is really a "business layer" function --- I can use this as a reason
+# to create a business layer! That is a Todo.
+    def full_name(self):
+# This needs to handle missing middle initial!
+        return self.first_name + " " + self.middle_initial + "." + " " + self.last_name
+
 
 # Note: There is a danger I may have inserted a record into case_employees by hand.
 # We seem to have a problem building records there.  I may have to build a 
