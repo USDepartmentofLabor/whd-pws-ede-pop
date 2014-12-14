@@ -166,3 +166,21 @@ def get_employee_names_db(connection):
         emps.append((emp[5],emp[6],emp[7]));
     return emps
 
+def read_employees_from_case(connection,case_id):
+    read_emps_sql = "select * from esadbm.case_employees where case_id = {0}".format(case_id);
+    result =  conn.execute(read_emps_sql);
+    emps = []
+    for row in result:
+        emps.append(Employee_pl(row[5],row[6],row[7]));
+    return emps
+
+def find_random_case(conn):
+    read_cases_sql = "select ee_case_id,case_id from esadbm.case_employees";
+    result =  conn.execute(read_cases_sql);
+        # Looks like maybe I can't get a length on a reader, so I will slurp..
+    cases = []
+    for row in result:
+        cases.append(row[1])
+    case_id = random.choice(cases);
+    return case_id
+
