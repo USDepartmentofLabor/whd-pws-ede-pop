@@ -10,6 +10,10 @@ db2 = create_engine('ibm_db_sa://'+db2_username+':'+db2_password+'@localhost:500
 
 conn = db2.connect()
 
+# GENERAL NOTES
+# I suspect, and need to confirm, that "KASE" is the master table for an overall Case.
+# In this example, we are workign mostly with the "EE_CASE", which might mean
+# Employee Entry.
 
 def create_temp_ee_in_session(connection):
     call_cmd = """
@@ -105,7 +109,7 @@ def insert_random_emp_into_temp_ee(connection,case_id,employee):
     call_cmd = """
 insert into SESSION.Temp_Ee values
      ( {0},
-       3,
+        4,
        '{1}',
        '{2}',
        '{3}',
@@ -179,6 +183,11 @@ def read_employees_from_case(connection,case_id):
     for row in result:
         emps.append(Employee_pl(row[5],row[6],row[7]));
     return emps
+
+def read_violations_from_case(connection,case_id):
+    read_emps_sql = "select * from esadbm.case_act_eer_viol where case_id = {0}".format(case_id);
+    result =  conn.execute(read_emps_sql);
+    return result
 
 def find_random_case(conn):
     read_cases_sql = "select ee_case_id,case_id from esadbm.case_employees";

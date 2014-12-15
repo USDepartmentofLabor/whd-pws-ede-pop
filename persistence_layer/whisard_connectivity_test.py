@@ -33,7 +33,7 @@ class TestSequenceFunctions(unittest.TestCase):
             trans.rollback()
             raise
 
-    def test_can_add_two_employees_to_case(self):
+    def test_can_add_two_violations_to_case(self):
         case_id = random.randint(0,10000)
         violation0 = getRandomSixString()
         violation1 = getRandomSixString()
@@ -47,6 +47,7 @@ class TestSequenceFunctions(unittest.TestCase):
         except:
             trans.rollback()
             raise
+
 
     def test_can_read_cases(self):
 # I have no idea what the difference between thse two fields are!
