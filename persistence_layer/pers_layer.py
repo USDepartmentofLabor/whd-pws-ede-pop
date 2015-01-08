@@ -10,10 +10,6 @@ db2 = create_engine('ibm_db_sa://'+db2_username+':'+db2_password+'@localhost:500
 
 conn = db2.connect()
 
-# GENERAL NOTES
-# I suspect, and need to confirm, that "KASE" is the master table for an overall Case.
-# In this example, we are workign mostly with the "EE_CASE", which might mean
-# Employee Entry.
 
 def create_temp_ee_in_session(connection):
     call_cmd = """
@@ -61,18 +57,10 @@ def create_temp_viol_in_session(connection):
 """
     result =  connection.execute(call_cmd);
 
-class Employee_pl:
-    def __init__(self, first, middle, last):
-        self.first_name = first;
-        self.middle_initial = middle;
-        self.last_name = last;
-
-# In reality, this is really a "business layer" function --- I can use this as a reason
-# to create a business layer! That is a Todo.
-    def full_name(self):
-# This needs to handle missing middle initial!
-        return self.first_name + " " + self.middle_initial + "." + " " + self.last_name
-
+def getRandomSixString():
+    # Thanks to Ignacio Vasquez-Abrams from Stack Exchnage
+    r = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+    return r;
 
 # Note: There is a danger I may have inserted a record into case_employees by hand.
 # We seem to have a problem building records there.  I may have to build a 
@@ -105,11 +93,11 @@ insert into SESSION.Temp_Ee values
 """;
     result =  connection.execute(call_cmd);
 
-def insert_random_emp_into_temp_ee(connection,case_id,employee):
+def insert_random_emp_into_temp_ee(connection,case_id):
     call_cmd = """
 insert into SESSION.Temp_Ee values
      ( {0},
-        4,
+       3,
        '{1}',
        '{2}',
        '{3}',
@@ -128,19 +116,18 @@ insert into SESSION.Temp_Ee values
        0
      )
 """;
-#    insert_emp = call_cmd.format(case_id,'Mickey','M','Mouse'+str(case_id));
-    insert_emp = call_cmd.format(case_id,employee.first_name,employee.middle_initial,employee.last_name);
+    insert_emp = call_cmd.format(case_id,'Mickey','M','Mouse'+str(case_id));
     print insert_emp
     result =  connection.execute(insert_emp);
 
 
 # In the unlikely event a random collision, this will fail an integrity check.
-def insert_something_into_temp_viol(connection,case_id,violation):
+def insert_something_into_temp_viol(connection,case_id):
     call_cmd0 = """
 insert into SESSION.Temp_Viol values
      ( 2,
 """
-    call_cmd1 = "'"+violation+"'";
+    call_cmd1 = "'"+getRandomSixString()+"'";
     call_cmd2 = """
        0,
        0,
@@ -172,30 +159,6 @@ def get_employee_names_db(connection):
     result =  connection.execute(read_emps_sql);
     emps = []
     for emp in result:
-        print emp;
-        emps.append((emp[5],emp[6],emp[7]));
+        emps.append((str(emp[5]),str(emp[6]),str(emp[7])));
     return emps
-
-def read_employees_from_case(connection,case_id):
-    read_emps_sql = "select * from esadbm.case_employees where case_id = {0}".format(case_id);
-    result =  conn.execute(read_emps_sql);
-    emps = []
-    for row in result:
-        emps.append(Employee_pl(row[5],row[6],row[7]));
-    return emps
-
-def read_violations_from_case(connection,case_id):
-    read_emps_sql = "select * from esadbm.case_act_eer_viol where case_id = {0}".format(case_id);
-    result =  conn.execute(read_emps_sql);
-    return result
-
-def find_random_case(conn):
-    read_cases_sql = "select ee_case_id,case_id from esadbm.case_employees";
-    result =  conn.execute(read_cases_sql);
-        # Looks like maybe I can't get a length on a reader, so I will slurp..
-    cases = []
-    for row in result:
-        cases.append(row[1])
-    case_id = random.choice(cases);
-    return case_id
 
