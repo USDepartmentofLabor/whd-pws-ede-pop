@@ -8,6 +8,7 @@ db2_username = os.environ['DB2INSTL_USERNAME']
 db2_password = os.environ['DB2INSTL_PASSWORD']
 db2 = create_engine('ibm_db_sa://'+db2_username+':'+db2_password+'@localhost:50009/WHISPROD')
 
+print 'ibm_db_sa://'+db2_username+':'+db2_password+'@localhost:50009/WHISPROD'
 conn = db2.connect()
 
 

@@ -30,6 +30,31 @@ In the persistence_layer directory, run:
 
 At the time of this writing, this test will probably fail unless you have disabled a trigger.  I have a script for that, but am currently hesitant to commit it to this repo.
 
+## Additional steps
+Install ibm_db is a little tricky, it is not a simple PIP install.  I recommend following the instructions in the tar ball.
+Basically you have have an environmental variable set.  Also make sure you have python-dev installed on Ubuntu.
+
+```
+sudo pip install SQLAlchemy
+```
+
+```
+sudo easy_install ibm_db_sa
+```
+
+## Instructions: for installing DB2 and a Sample database
+
+(This section is for my own memory --- probably nobody will every have to do this.)
+
+Be sure to follow the instructions on setting system spaces large enough for Ubuntu.
+
+Do NOT install as root, but as the db2instl user.
+
+Do not sure db2icrt db2instl db2instl as root.
+
+Try to get the tablespaces created, but they may be too large by default for a small AWS instance.
+
+There is a problem is the user default value.
 
 ## Public domain
 
