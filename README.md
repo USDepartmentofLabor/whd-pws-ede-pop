@@ -48,13 +48,36 @@ sudo easy_install ibm_db_sa
 
 Be sure to follow the instructions on setting system spaces large enough for Ubuntu.
 
-Do NOT install as root, but as the db2instl user.
+On an Ubuntu install, do a root install.  Following instructions similar for a Mac Install seem to work.
 
-Do not sure db2icrt db2instl db2instl as root.
+After installing, set up your service, and a port, and make sure it is working.
+
+I have a file (to remain private) for reproducing the tablespaces.
+
+Other files are used to regenerate the database schema.  These are not to be released.
 
 Try to get the tablespaces created, but they may be too large by default for a small AWS instance.
 
-There is a problem is the user default value.
+## Executing the tests and other notes
+
+I have a file that creates the tablespaces.  It doesn't seem to work perfectly.  You may have to create a tablespace by hand for the temporary tables.
+
+In order to run the test:
+```
+python whisard_connectivity_test.py
+```
+
+You have to set up certain variables:
+```
+ubuntu:~/dol-ede-wireframes/persistence_layer$ source ../../db2credentials.sh 
+ubuntu:~/dol-ede-wireframes/persistence_layer$ source /home/db2instl/sqllib/db2profile
+
+```
+
+NOTE: Right now I can't run the tests, possibly because I have not correctly seeded the firs
+employee---I can't remember if I have to do that or not.  Sadly, this is a case of me not 
+keeping good enough notes.  In any case I will have to debug it, but at least I have 
+things working now.
 
 ## Public domain
 
