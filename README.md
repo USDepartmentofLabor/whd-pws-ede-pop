@@ -58,6 +58,13 @@ Other files are used to regenerate the database schema.  These are not to be rel
 
 Try to get the tablespaces created, but they may be too large by default for a small AWS instance.
 
+To Seed the database with the information provided by the WHD, execute:
+```
+./db2 -f /home/ubuntu/dol-sample-database/CSV/import.sql
+```
+
+Note that this file has hardwired filenames --- it is not worth us fixing, for something that will be used once.  These files are in dol-sample-database/CSV.  These are the .CSV files I got the WHD, and of course had to manipulate a bit.  I created the file import.sql to do the import.
+
 ## Executing the tests and other notes
 
 I have a file that creates the tablespaces.  It doesn't seem to work perfectly.  You may have to create a tablespace by hand for the temporary tables.
@@ -67,17 +74,38 @@ In order to run the test:
 python whisard_connectivity_test.py
 ```
 
-You have to set up certain variables:
+You have to set up certain variables, which on our machine are handled by putting them in the .bashrc script.
 ```
-ubuntu:~/dol-ede-wireframes/persistence_layer$ source ../../db2credentials.sh 
-ubuntu:~/dol-ede-wireframes/persistence_layer$ source /home/db2instl/sqllib/db2profile
-
+source ./db2credentials.sh
+source ./website_credentials.sh
+source /home/db2instl/sqllib/db2profile
 ```
 
-NOTE: Right now I can't run the tests, possibly because I have not correctly seeded the firs
-employee---I can't remember if I have to do that or not.  Sadly, this is a case of me not 
-keeping good enough notes.  In any case I will have to debug it, but at least I have 
-things working now.
+db2credential.sh:
+```
+export DB2INSTL_USERNAME='db2instl'
+export DB2INSTL_PASSWORD='changeme'
+```
+
+## The Website
+
+The website is created just to so that firms can understand and evaluate what is needed.  It is essentially a "hello world", but with the most important step for this project: it actually connects to invoke the stored procuderes in the Legacy database.
+
+The website is currently here:
+
+[http://ec2-54-174-175-115.compute-1.amazonaws.com/employee](http://ec2-54-174-175-115.compute-1.amazonaws.com/employee)
+
+It is protected by Basic Http Authentication.  This is a browser server protocol---after you enter the credentials, your browser will remember them for a quite a while in general, so don't be disturbed if you only have to enter them when you first visit.
+
+In the code, the credentials are in website_credentials.sh, which looks like this:
+```
+export FLASK_USERNAME='username'
+export FLASK_PASSWORD='changeme'
+```
+
+If you go there now, you see a set of employees read from an actual database.
+
+My current plan is to improve this to use the wireframes that Jesse and Alan created to allow you to actually add one name to the database.
 
 ## Public domain
 
