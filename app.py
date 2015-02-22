@@ -48,20 +48,33 @@ def index():
 def violations():
     return render_template("violations.html")
     
+@app.route("/employeesx")
+@requires_auth
+def employeesx():
+    emps = get_employee_names()
+    return "\n".join(map(pretty,emps))
+    return render_template("employees.html")
+
 @app.route("/employees")
 @requires_auth
 def employees():
-    return render_template("employees.html")
-
-@app.route("/employeesx")
-@requires_auth
-def employeesxs():
     case_id = find_random_case(conn)
     emps = read_employees_from_case(conn,case_id)
-#    emps = get_employee_names()
-#    return "\n".join(map(pretty,emps))
     print emps
     return render_template("employeesx.html",case_id=case_id,employees=emps)
+
+@app.route("/add_employee")
+@requires_auth
+def add_employee():
+    f = request.args.get('fname')
+    m = request.args.get('mname')
+    m = m[0]
+    l = request.args.get('lname')
+    case_id = request.args.get('case_id',0,type=int)
+    print f + m + l + " into case: "+str(case_id)
+    create_new_employee(conn,case_id,f,m,l)
+    return f + m + l + " into case: "+str(case_id)
+
     
 @app.route("/manual")
 @requires_auth
