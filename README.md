@@ -93,7 +93,7 @@ The website is created just to so that firms can understand and evaluate what is
 
 The website is currently here:
 
-[http://ec2-54-174-175-115.compute-1.amazonaws.com/employee](http://ec2-54-174-175-115.compute-1.amazonaws.com/employee)
+[http://spellbinder-labor.18f.us](http://spellbinder-labor.18f.us)
 
 It is protected by Basic Http Authentication.  This is a browser server protocol---after you enter the credentials, your browser will remember them for a quite a while in general, so don't be disturbed if you only have to enter them when you first visit.
 
