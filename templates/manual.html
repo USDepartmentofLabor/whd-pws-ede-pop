@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript">
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $(document).ready(function() {
+        var fname_el = $('#firstname_id');
+        var mname_el = $('#middlename_id');
+        var lname_el = $('#lastname_id');
+        var button_el = $('#button_el');
+        button_el.click(function() {
+            $.getJSON($SCRIPT_ROOT + '/add_employee', {
+              fname: $('input[name="firstname"]').val(),
+              mname: $('input[name="middlename"]').val(),
+              lname: $('input[name="lastname"]').val(),
+              case_id: $('input[name="case"]').val()
+            },
+            function(data) {
+                alert(data);
+            });
+        });
+    });
+</script>
+
+  <h1>Manual Entry</h1>
+First Name:
+ <input type="text" name="firstname" class="enter" value="" id="firstname_id"/>
+<p>
+Middle Initial:
+ <input type="text" name="middlename" class="enter" value="" id="middlename_id"/>
+<p>
+Last Name:
+ <input type="text" name="lastname" class="enter" value="" id="lastname_id"/>
+<p>
+
+Case Id:
+ <input type="text" name="case" class="enter" value="" id="case_id"/>
+
+ <input type="button" value="click" id="button_el"/>
+
+{% endblock %}
