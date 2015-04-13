@@ -2,7 +2,7 @@
 
 Users: Investigator and/or Manager
 
-Scenario: (This scenario represents data entry needs that are part of a larger workflow.) An Investigator has been assigned to investigate an employer about wage infractions. The Investigator then often travels to the place of employment and interviews the Employer and Employees. As part of that process, he/she collects contact information and employment history. After the Investigator determines the Findings (e.g., are employees owed back wages? and, if so, how much? what rules or laws were broken?), the Investigator then enters all that information into a WHD database. This project is concerned with just this part of the investigation that is the most common type of investigation regarding Back Wage. An Investigator often has 6-15 separate Employer investigations underway at any time.
+Scenario: (This scenario represents data entry needs that are part of a larger workflow.) An Investigator has been assigned to investigate an employer to determine the status of compliance under one or more statutes enforced by WHD. The Investigator then often travels to the place of employment and interviews the Employer and Employees. As part of that process, the investigator collects contact information and employment history. After the Investigator determines the Findings (e.g., are employees owed back wages? and, if so, how much? what rules or laws were broken? What other remedies are appropriate?), the Investigator then enters certain information into a WHD database. This project is concerned with just this part of the investigation that is the most common type of investigation regarding Back Wage. An Investigator often has 6-15 separate Employer investigations underway at any time.
 
 Epic stories that capture this:
 
